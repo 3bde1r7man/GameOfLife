@@ -2,7 +2,7 @@
 
 Universe::Universe()
 {
-	v = vector<vector<int>>(SIZE1, vector<int>(SIZE1, 0));
+	v = vector<vector<int>>(SIZE, vector<int>(SIZE, 0));
 	
 }
 
@@ -38,9 +38,9 @@ void  Universe::display()
 {
 	fstream boardFile;
 	boardFile.open("board.txt", ios::app);
-	for (int i = 0; i < SIZE1; i++)
+	for (int i = 0; i < SIZE; i++)
 	{
-		for (int j = 0; j < SIZE1; j++)
+		for (int j = 0; j < SIZE; j++)
 		{
 			cout << v[i][j] << ' ';
 			boardFile << v[i][j] << ' ';
@@ -55,16 +55,16 @@ void  Universe::display()
 
 void  Universe::reset()
 {
-	v = vector<vector<int>>(SIZE1, vector<int>(SIZE1, 0));
+	v = vector<vector<int>>(SIZE, vector<int>(SIZE, 0));
 }
 
 void  Universe::count_neighbors()
 {
 	int count = 0;
-	vector<vector<int>> vec2(SIZE1, vector<int>(SIZE1, 0));
-	for (int i = 0; i < SIZE1; i++)
+	vector<vector<int>> vec2(SIZE, vector<int>(SIZE, 0));
+	for (int i = 0; i < SIZE; i++)
 	{
-		for (int j = 0; j < SIZE1; j++)
+		for (int j = 0; j < SIZE; j++)
 		{
 			count = 0;
 			if (i != 0 && j != 0) { //to avoid the 1st row && 1st col error
@@ -78,7 +78,7 @@ void  Universe::count_neighbors()
 					count++;
 				}
 			}
-			if (i != SIZE1 - 1 && j != SIZE1 - 1) { //to avoid last row && last col error
+			if (i != SIZE - 1 && j != SIZE - 1) { //to avoid last row && last col error
 				if (v[i + 1][j] == 1) {
 					count++;
 				}
@@ -89,12 +89,12 @@ void  Universe::count_neighbors()
 					count++;
 				}
 			}
-			if (i != 0 && j != SIZE1 - 1) { //to avoid common row or column palces
+			if (i != 0 && j != SIZE - 1) { //to avoid common row or column palces
 				if (v[i - 1][j + 1] == 1) {
 					count++;
 				}
 			}
-			if (j != 0 && i != SIZE1 - 1) { //to avoid common row or column palces
+			if (j != 0 && i != SIZE - 1) { //to avoid common row or column palces
 				if (v[i + 1][j - 1] == 1) {
 					count++;
 				}

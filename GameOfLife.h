@@ -2,14 +2,13 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <Windows.h>
 #include <fstream>
 
 using namespace std;
 
 
 
-const int SIZE1 = 20;
+const int SIZE = 20;
 
 class  Universe
 {
