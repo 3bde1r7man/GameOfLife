@@ -1,12 +1,16 @@
 #include "GameOfLife.h"
 
-GameOfLife::GameOfLife()
+Universe::Universe()
 {
 	v = vector<vector<int>>(SIZE1, vector<int>(SIZE1, 0));
 	
 }
 
-void GameOfLife::initialize()
+Universe::~Universe() {
+	cout << "\n\n Please go check board.txt to see the board clearly\n";
+}
+
+void  Universe::initialize()
 {
 	int point, x{}, y{}; 
 	cout << "PLease enter how many points you want to choose: ";
@@ -30,26 +34,31 @@ void GameOfLife::initialize()
 	}
 }
 
-void GameOfLife::display()
+void  Universe::display()
 {
-	Sleep(2000);
-	system("cls");
+	fstream boardFile;
+	boardFile.open("board.txt", ios::app);
 	for (int i = 0; i < SIZE1; i++)
 	{
 		for (int j = 0; j < SIZE1; j++)
 		{
 			cout << v[i][j] << ' ';
+			boardFile << v[i][j] << ' ';
 		}
 		cout << '\n';
+		boardFile << '\n';
 	}
+	boardFile << "---------------------------------------------------------------------------\n";
+	cout << "---------------------------------------------------------------------------\n";
+	boardFile.close();
 }
 
-void GameOfLife::reset()
+void  Universe::reset()
 {
 	v = vector<vector<int>>(SIZE1, vector<int>(SIZE1, 0));
 }
 
-void GameOfLife::count_neighbors()
+void  Universe::count_neighbors()
 {
 	int count = 0;
 	vector<vector<int>> vec2(SIZE1, vector<int>(SIZE1, 0));
@@ -109,7 +118,7 @@ void GameOfLife::count_neighbors()
 	v = vec2;
 }
 
-void GameOfLife::next_generation(int gen )
+void  Universe::next_generation(int gen )
 {
 	display();
 	initialize();
@@ -120,7 +129,7 @@ void GameOfLife::next_generation(int gen )
 	}
 }
 
-void GameOfLife::run()
+void Universe::run()
 {
 	int gen;
 	cout << "How many generation you want to diplay: ";

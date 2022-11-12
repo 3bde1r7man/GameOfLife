@@ -9,6 +9,6 @@ description: In this problem we develope "Game of Life" Game
 #include "GameOfLife.h"
 
 int main() {
-	GameOfLife g;
+	Universe g;
 	g.run();
 }

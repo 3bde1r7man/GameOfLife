@@ -2,8 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <math.h>
 #include <Windows.h>
+#include <fstream>
 
 using namespace std;
 
@@ -11,13 +11,14 @@ using namespace std;
 
 const int SIZE1 = 20;
 
-class GameOfLife
+class  Universe
 {
 protected:
 	vector<vector<int>> v;
 	
 public:
-	GameOfLife();
+	Universe();
+	~Universe();
 	void initialize();
 	void display();
 	void reset();
